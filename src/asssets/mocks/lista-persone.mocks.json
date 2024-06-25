@@ -1,0 +1,23 @@
+[
+  {
+    "id": "1",
+    "nome": "Gianni",
+    "cognome": "Rossi",
+    "eta": 20,
+    "sesso": "M"
+  },
+  {
+    "id": "2",
+    "nome": "Francesca",
+    "cognome": "Bianch",
+    "eta": 30,
+    "sesso": "F"
+  },
+  {
+    "id": "3",
+    "nome": "Ajeje",
+    "cognome": "Brazorf",
+    "eta": 33,
+    "sesso": "M"
+  }
+]
