@@ -6,9 +6,11 @@
   <thead>
     <tr>
       <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
+      <th scope="col">Nome</th>
+      <th scope="col">Cognome</th>
+      <th scope="col">Età</th>
+      <th scope="col">Sesso</th>
+      <th scope="col"></th>
     </tr>
   </thead>
     <tbody>
@@ -17,11 +19,15 @@
         <td>{{item.nome}}</td>
         <td>{{item.cognome}}</td>
         <td>{{item.eta}}</td>
+        <td>{{item.sesso}}</td>
+        <td class="d-flex">
+          <div class="">
+            <button (click)="openDialog(item)" type="button" class="btn btn-warning me-3">Edit</button>
+          </div>
+          <div class="">
+            <button (click)="bottoneDelete()" type="button" class="btn btn-danger">delete</button>
+          </div>
+        </td>
       </tr>
     </tbody>
-  <div *ngFor="let item of listaPersone">
-  </div>
   </table>
-
-
-<app-form></app-form>
