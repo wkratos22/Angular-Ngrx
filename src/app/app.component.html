@@ -14,7 +14,7 @@
     </tr>
   </thead>
     <tbody>
-      <tr *ngFor="let item of listaPersone">
+      <tr *ngFor="let item of lista$ | async">
         <th scope="row">{{item.id}}</th>
         <td>{{item.nome}}</td>
         <td>{{item.cognome}}</td>
@@ -25,9 +25,13 @@
             <button (click)="openDialog(item)" type="button" class="btn btn-warning me-3">Edit</button>
           </div>
           <div class="">
-            <button (click)="bottoneDelete()" type="button" class="btn btn-danger">delete</button>
+            <button (click)="bottoneDelete(item.id)" type="button" class="btn btn-danger">delete</button>
           </div>
         </td>
       </tr>
     </tbody>
   </table>
+
+  <!-- <pre>{{item$ | async | json}}</pre> -->
+
+

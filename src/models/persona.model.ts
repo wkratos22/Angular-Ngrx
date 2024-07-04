@@ -1,7 +1,7 @@
 export interface Persona {
-    "id": number;
-    "nome": string;
-    "cognome": string;
-    "eta": number;
-    "sesso": boolean;
+  id: string;
+  nome: string;
+  cognome: string;
+  eta: number;
+  sesso: boolean;
 }
