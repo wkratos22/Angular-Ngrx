@@ -10,10 +10,9 @@ export const loadComplete = createAction(
 
 );
 
-export const editPersona = createAction(
+export const savePersona = createAction(
     '[App/Lista] Edit start',
-  props<{ itemPersona: Persona }>()
-
+  props<{ id: string | undefined, itemPersona: Persona }>()
 );
   
 export const deletePersona = createAction(

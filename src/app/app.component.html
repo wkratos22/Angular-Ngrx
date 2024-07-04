@@ -1,8 +1,6 @@
-<div class="p-3">
-    <button (click)="buttonClick()" type="button" class="btn btn-primary">Primary</button>
-</div>
 
-<table class="table container">
+
+<table class="table container mt-5">
   <thead>
     <tr>
       <th scope="col">#</th>
@@ -22,7 +20,7 @@
         <td>{{item.sesso}}</td>
         <td class="d-flex">
           <div class="">
-            <button (click)="openDialog(item)" type="button" class="btn btn-warning me-3">Edit</button>
+            <button (click)="editPerson(item.id)" type="button" class="btn btn-warning me-3">Edit</button>
           </div>
           <div class="">
             <button (click)="bottoneDelete(item.id)" type="button" class="btn btn-danger">delete</button>
@@ -32,6 +30,13 @@
     </tbody>
   </table>
 
-  <!-- <pre>{{item$ | async | json}}</pre> -->
+  <div class="container">
+    <button (click)="addPerson()" type="button" class="btn btn-primary me-3">Aggiungi</button>
+  </div>
 
 
+
+  
+  
+  
+  

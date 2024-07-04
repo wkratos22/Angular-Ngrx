@@ -14,6 +14,8 @@ import { provideClientHydration } from '@angular/platform-browser';
 import { ListaEffects } from './form/store/lista/lista.effects';
 import { listaReducer } from './form/store/lista/lista.reducer';
 import { editReducer } from './form/store/edit/edit.reducer';
+import { EditEffects } from './form/store/edit/edit.effects';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -22,9 +24,9 @@ export const appConfig: ApplicationConfig = {
     provideStore(),
     provideState({ name: 'lista', reducer: listaReducer }),
     provideState({ name: 'edit', reducer: editReducer }),
-    provideEffects([ListaEffects]),
+    provideEffects([ListaEffects, EditEffects]),
     provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode() }),
     provideClientHydration(),
-    provideHttpClient(),
+    provideHttpClient(), provideAnimationsAsync(),
   ],
 };
