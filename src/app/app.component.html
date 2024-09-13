@@ -1,42 +1,132 @@
-
-
-<table class="table container mt-5">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Nome</th>
-      <th scope="col">Cognome</th>
-      <th scope="col">Età</th>
-      <th scope="col">Sesso</th>
-      <th scope="col"></th>
-    </tr>
-  </thead>
+<div class="container pb-5">
+  <table class="table mt-5">
+    <thead>
+      <tr *ngIf="sort$ | async as sort">
+        <!-- <th scope="col">
+          <button class="bottone-th" (click)="changeSort('id')">
+            <span>#</span>
+            @if (sort.orderBy === 'id') { @if (sort.sort === 'asc') {
+            <mat-icon aria-hidden="false" fontIcon="expand_more"></mat-icon>
+            } @else {
+            <mat-icon aria-hidden="false" fontIcon="expand_less"></mat-icon>
+            } }
+          </button>
+        </th> -->
+        <th scope="col">
+          <button class="bottone-th" (click)="changeSort('nome')">
+            <span>Nome</span>
+            @if (sort.orderBy === 'nome') { @if (sort.sort === 'asc') {
+            <mat-icon aria-hidden="false" fontIcon="expand_more"></mat-icon>
+            } @else {
+            <mat-icon aria-hidden="false" fontIcon="expand_less"></mat-icon>
+            } }
+          </button>
+        </th>
+        <th scope="col">
+          <button class="bottone-th" (click)="changeSort('cognome')">
+            <span>Cognome</span>
+            @if (sort.orderBy === 'cognome') { @if (sort.sort === 'asc') {
+            <mat-icon aria-hidden="false" fontIcon="expand_more"></mat-icon>
+            } @else {
+            <mat-icon aria-hidden="false" fontIcon="expand_less"></mat-icon>
+            } }
+          </button>
+        </th>
+        <th scope="col">
+          <button class="bottone-th" (click)="changeSort('dataNascita')">
+            <span>Età</span>
+            @if (sort.orderBy === 'dataNascita') { @if (sort.sort === 'asc') {
+            <mat-icon aria-hidden="false" fontIcon="expand_more"></mat-icon>
+            } @else {
+            <mat-icon aria-hidden="false" fontIcon="expand_less"></mat-icon>
+            } }
+          </button>
+        </th>
+        <th scope="col">
+          <button class="bottone-th" (click)="changeSort('sesso')">
+            <span>Sesso</span>
+            @if (sort.orderBy === 'sesso') { @if (sort.sort === 'asc') {
+            <mat-icon aria-hidden="false" fontIcon="expand_more"></mat-icon>
+            } @else {
+            <mat-icon aria-hidden="false" fontIcon="expand_less"></mat-icon>
+            } }
+          </button>
+        </th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
     <tbody>
       <tr *ngFor="let item of lista$ | async">
-        <th scope="row">{{item.id}}</th>
-        <td>{{item.nome}}</td>
-        <td>{{item.cognome}}</td>
-        <td>{{item.eta}}</td>
-        <td>{{item.sesso}}</td>
+        <!-- <th scope="row">{{ item.id }}</th> -->
+        <td>{{ item.nome }}</td>
+        <td>{{ item.cognome }}</td>
+        <td>{{ item.dataNascita | age }}</td>
+        <td>{{ item.sesso }}</td>
         <td class="d-flex">
           <div class="">
-            <button (click)="editPerson(item.id)" type="button" class="btn btn-warning me-3">Edit</button>
+            <button
+              (click)="detailPerson(item.id)"
+              type="button"
+              class="btn btn-primary me-3"
+            >
+              Detail
+            </button>
           </div>
           <div class="">
-            <button (click)="bottoneDelete(item.id)" type="button" class="btn btn-danger">delete</button>
+            <button
+              (click)="editPerson(item.id)"
+              type="button"
+              class="btn btn-warning me-3"
+            >
+              Edit
+            </button>
+          </div>
+          <div class="">
+            <button
+              (click)="bottoneDelete(item.id)"
+              type="button"
+              class="btn btn-danger"
+            >
+              delete
+            </button>
           </div>
         </td>
       </tr>
     </tbody>
   </table>
 
-  <div class="container">
-    <button (click)="addPerson()" type="button" class="btn btn-primary me-3">Aggiungi</button>
+  <div class="d-flex justify-content-between">
+    <button (click)="addPerson()" type="button" class="btn btn-primary me-3">
+      Aggiungi
+    </button>
+    <div class="d-flex gap-4">
+      <ng-container *ngIf="pageNumber$ | async as pageNumber">
+        <nav aria-label="Page navigation example">
+          <ul class="pagination mb-0">
+            <li class="page-item">
+              <a class="page-link" href="#" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+              </a>
+            </li>
+            <li class="page-item" [class.active]="pageNumber === 1"><a class="page-link" href="#">1</a></li>
+            <li class="page-item" [class.active]="pageNumber === 2"><a class="page-link" href="#">2</a></li>
+            <li class="page-item" [class.active]="pageNumber === 3"><a class="page-link" href="#">3</a></li>
+            <li class="page-item">
+              <a class="page-link" href="#" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </ng-container>
+      <ng-container *ngIf="pageSize$ | async as pageSize">
+        <select class="form-select" aria-label="Default select example">
+          <option disabled [selected]="!pageSize">Elementi</option>
+          @for (pageItem of pageItems; track $index) {
+            <option (click)="elemtniPagina(pageSize)" [value]="pageItem" [selected]="pageItem === pageSize">{{ pageItem }}</option>
+          }
+        </select>
+      </ng-container>
+    </div>
   </div>
-
-
-
-  
-  
-  
-  
+</div>

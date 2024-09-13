@@ -1,6 +1,9 @@
-import { Component, OnInit, inject } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
-import { ListaService } from '../../api/lista.service';
+import { Component, inject } from '@angular/core';
+import {
+  MAT_DIALOG_DATA,
+  MatDialogModule,
+  MatDialogRef,
+} from '@angular/material/dialog';
 import { Persona } from '../../models/persona.model';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -9,11 +12,11 @@ import { FormsModule } from '@angular/forms';
   selector: 'app-modal-content',
   standalone: true,
   imports: [MatDialogModule, CommonModule, FormsModule],
-  templateUrl: './modal-content.component.html',
-  styleUrl: './modal-content.component.scss',
+  templateUrl: './modal-detail-content.component.html',
+  styleUrl: './modal-detail-content.component.scss',
 })
-export class ModalContentComponent {
-  readonly dialogRef = inject(MatDialogRef<ModalContentComponent>);
+export class ModalDetailContentComponent {
+  readonly dialogRef = inject(MatDialogRef<ModalDetailContentComponent>);
   readonly personaEdit = inject<Persona>(MAT_DIALOG_DATA);
 
   savePersona(persona: Persona): void {

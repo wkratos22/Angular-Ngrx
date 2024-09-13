@@ -2,7 +2,7 @@ export interface Persona {
   id: string;
   nome: string;
   cognome: string;
-  eta: number;
+  dataNascita: string;
   sesso: boolean;
 }
 

@@ -1,0 +1,34 @@
+<div>
+  <h2 mat-dialog-title>{{ personaEdit.id ? 'Edit' : 'Add'}}</h2>
+  <mat-dialog-content>
+    <form #editPersonaForm="ngForm">
+      <div class="mt-2">
+        <label for="">Nome</label>
+        <input type="text" class="form-control" name="nome" [ngModel]="personaEdit.nome" required/>
+      </div>
+      <div class="my-2">
+        <label for="">Cognome</label>
+        <input type="text" class="form-control" name="cognome" [ngModel]="personaEdit.cognome" required/>
+      </div>
+      <div class="my-3">
+        <label for="">Data di nascita</label>
+        <input type="date" class="form-control" name="dataNascita" [ngModel]="personaEdit.dataNascita" required/>
+      </div>
+      <div class="mb-2">
+        <label for="">Sesso</label>
+        <select name="sesso" class="form-control" [ngModel]="personaEdit.sesso" required>
+          <option value="M">Maschio</option>
+          <option value="F">Femmina</option>
+        </select>
+      </div>
+    </form>
+  </mat-dialog-content>
+  <mat-dialog-actions class="d-flex justify-content-end pe-4">
+    <div class="me-2">
+      <button class="btn btn-danger" mat-button mat-dialog-close>Close</button>
+    </div>
+    <div>
+      <button class="btn btn-success" mat-button (click)="savePersona(editPersonaForm.value)">Save</button>
+    </div>
+  </mat-dialog-actions>
+</div>

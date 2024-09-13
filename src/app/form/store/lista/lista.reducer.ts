@@ -19,5 +19,6 @@ export const listaReducer = createReducer(
   }),
   on(ListaActions.deletePersona, (state, { id }) =>
     state.filter((x) => x.id !== id)
-  )
+  ),
+  on(ListaActions.sortComplete, (_, { personeSort }) => personeSort),
 );

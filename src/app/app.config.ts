@@ -16,6 +16,9 @@ import { listaReducer } from './form/store/lista/lista.reducer';
 import { editReducer } from './form/store/edit/edit.reducer';
 import { EditEffects } from './form/store/edit/edit.effects';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { sortReducer } from './form/store/sort/sort.reducer';
+import { SortEffects } from './form/store/sort/sort.effects';
+import { paginationReducer } from './form/store/pagination/pagination.reducer';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -24,9 +27,12 @@ export const appConfig: ApplicationConfig = {
     provideStore(),
     provideState({ name: 'lista', reducer: listaReducer }),
     provideState({ name: 'edit', reducer: editReducer }),
-    provideEffects([ListaEffects, EditEffects]),
+    provideState({ name: 'sort', reducer: sortReducer }),
+    provideState({ name: 'pagination', reducer: paginationReducer }),
+    provideEffects([ListaEffects, EditEffects, SortEffects]),
     provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode() }),
     provideClientHydration(),
-    provideHttpClient(), provideAnimationsAsync(),
+    provideHttpClient(),
+    provideAnimationsAsync(),
   ],
 };

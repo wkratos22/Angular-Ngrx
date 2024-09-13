@@ -7,6 +7,6 @@ const initialState: Persona = {} as Persona;
 export const editReducer = createReducer(
   initialState,
   on(init, () => createPersona()),
-  on(addComplete, (_, { persona }) => persona ?? {} as Persona),
-  on(clear, () => ({} as Persona)),
+  on(addComplete, (_, { persona }) => persona ?? ({} as Persona)),
+  on(clear, () => ({} as Persona))
 );
